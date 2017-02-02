@@ -3,7 +3,10 @@ class Billetera:
 		self.id = id
 		self.nombres = nombre
 		self.apellidos = apellidos
-		self.ci = ci
+		if type(ci) != int:
+    		raise TypeError, "i debe ser del tipo int"
+		else:
+			self.ci = ci
 		self.pin = pin
 		self.creditos = []
 		self.debitos = []
@@ -29,24 +32,30 @@ class Billetera:
 		return c-d
 
 	def recargar(self,monto,fecha,id):
-		aux = Cargas(monto,fecha,id)
-		self.creditos.append(aux)
+		if (monto<=0):
+			print("El monto a recargar no puede ser menor o igual a cero")
+		else:
+			aux = Cargas(monto,fecha,id)
+			self.creditos.append(aux)
 
 	def consumir(self,monto,fecha,id,pin):
 
-		if (self.saldo()>=monto) and (pin ==self.pin):
-			aux = Cargas(monto,fecha,id)
-			self.debitos.append(aux)
+		if (monto<=0):
+			print("El monto a consumir no puede ser menor o igual a cero")
 		else:
-			if self.saldo()<monto:
-				print("Saldo insuficiente")
+			if (self.saldo()>=monto) and (pin ==self.pin):
+				aux = Cargas(monto,fecha,id)
+				self.debitos.append(aux)
 			else:
-				print("El pin ingresado es incorrecto")
+				if self.saldo()<monto:
+					print("Saldo insuficiente")
+				else:
+					print("El pin ingresado es incorrecto")
 
 
 class Cargas:
 	def __init__(self,monto = 0,fecha='',id=0):
-		self.monto = monto
+		self.monto = monto #Debe ser mayor estricto que cero
 		self.fecha = fecha
 		self.id = id
 
@@ -55,12 +64,12 @@ B = Billetera('blue','Fabiana José','Acosta Díaz',24401656,1234)
 B.mostrar()
 
 B.mostrarC()
-B.recargar(1500,'31/1/2017',24401)
+B.recargar(-1500,'31/1/2017',24401)
 B.mostrarC()
 B.recargar(1500,'31/1/2017',2445)
 s = 'El saldo es ' + repr(B.saldo())
 print(s)
-B.consumir(6500,'31/1/2017',24408,1234)
+B.consumir(-6500,'31/1/2017',24408,1234)
 s = 'El saldo es ' + repr(B.saldo())
 print(s)
 B.recargar(10500,'31/1/2017',2401)
