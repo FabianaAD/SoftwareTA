@@ -2,7 +2,7 @@
 Created on 2 feb. 2017
 
 @author: Gabriel Torres 13-11412
-         Fabiana Acosta 10-
+         Fabiana Acosta 10-10005
 '''
 import unittest
 from billetera import *
