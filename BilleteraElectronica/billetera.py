@@ -1,3 +1,8 @@
+'''
+Autores:	Gabriel Torres 13-11412
+			Fabiana Acosta 10-10005
+'''
+
 class Billetera():
 	def __init__(self, id, nombre, apellidos, ci, pin):
 		self.id = id
