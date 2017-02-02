@@ -1,0 +1,16 @@
+PRUEBAS
+
+ingresar monto a recargar con 0 #maliciosa
+
+ingresar consumo a realizar con 0 #maliciosa
+
+
+ingresar monto a recargar con -10 #maliciosa
+
+ingresar consumo a realizar con -10 #maliciosa
+
+Recargar 1000 y luego consumir 1000 #extremo
+
+recargar 1000 y luego consumir 999 #esquina
+
+ingresar una ci que sea letrass
